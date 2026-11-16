@@ -1,0 +1,22 @@
+trigger:
+  branches:
+    include:
+    - main
+
+pr:
+  branches:
+    include:
+    - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- checkout: self
+
+- bash: |
+    echo "Azure Pipelines GitHub integration test"
+    echo "Build Reason: $(Build.Reason)"
+    echo "Source Branch: $(Build.SourceBranch)"
+    echo "Source Version: $(Build.SourceVersion)"
+  displayName: "Display trigger information"
